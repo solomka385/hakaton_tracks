@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Анализ виброакустического сигнала</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <div class="title-sticker">
+          <span class="icon">📡</span>
+          <h1>Анализ виброакустического сигнала</h1>
+        </div>
+        <p>Обнаружение и визуализация треков автомобилей</p>
+      </div>
+    </header>
+
+    <main>
+      <button id="analyzeBtn" class="btn-primary">🚀 Запустить анализ</button>
+
+      <div id="loading" class="loader hidden">
+        <div class="spinner"></div>
+        <p id="statusText">Подготовка данных...</p>
+      </div>
+
+      <div id="results" class="results hidden">
+        <!-- Статистика -->
+        <section class="card">
+          <h2>📈 Статистика</h2>
+          <div id="statsText" class="stats-pre">Загрузка статистики...</div>
+        </section>
+
+        <!-- Визуализации -->
+        <section class="card">
+          <h2>🖼️ Визуализации</h2>
+          
+          <!-- Панель управления визуализациями -->
+          <div class="control-panel" style="margin: 20px 0; text-align: center;">
+            <button onclick="loadHeatmap()" class="btn-secondary" style="margin: 5px;">
+              🔥 Показать Heatmap
+            </button>
+            <button onclick="loadInfographic()" class="btn-secondary" style="margin: 5px;">
+              📊 Показать инфографику
+            </button>
+            <button onclick="loadSpeedDistribution()" class="btn-secondary" style="margin: 5px;">
+              📈 Показать распределение скоростей
+            </button>
+          </div>
+
+          <!-- Контейнер для heatmap -->
+          <div id="heatmap-container" class="viz-container" style="display: none;">
+            <h3>🔥 Тепловая карта треков</h3>
+            <div id="heatmap-content"></div>
+          </div>
+
+          <!-- Контейнер для инфографики -->
+          <div id="infographic-container" class="viz-container" style="display: none;">
+            <h3>📊 Комплексная инфографика</h3>
+            <div id="infographic-content"></div>
+          </div>
+
+          <!-- Контейнер для распределения скоростей -->
+          <div id="speed-distribution-container" class="viz-container" style="display: none;">
+            <h3>📈 Распределение скоростей</h3>
+            <div id="speed-distribution-content"></div>
+          </div>
+
+
+        
+        </section>
+
+        <!-- Скачивание -->
+        <section class="card download-section">
+          <h2>⬇️ Скачать результаты</h2>
+          <div class="button-group">
+            <a id="downloadJson" class="download-btn btn-json">JSON с треками</a>
+            <a id="downloadReport" class="download-btn btn-report">Текстовый отчет</a>
+            <a id="downloadAll" class="download-btn btn-zip">Все файлы (.zip)</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>© Обработка данных с оптического кабеля</p>
+    </footer>
+  </div>
+</body>
+</html>
